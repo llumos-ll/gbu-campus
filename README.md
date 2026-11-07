@@ -27,6 +27,18 @@ npm start
 
 Open http://127.0.0.1:5190/ for the day tour or http://127.0.0.1:5190/night/ for the night game. Run all commands from the repository root; the root build packages both modes together. Rebuild after changing source files. The completed build works without internet access. Fonts, geometry, materials and sound generation are local.
 
+### First-run checks
+
+If the page stays on "Preparing your visit…", work through these in order:
+
+- Run the three commands in the folder that contains `package.json`, and confirm `node --version` reports 22.12 or newer.
+- `npm start` serves the built `dist/` folder. Run `npm run build` before the first start and again after editing files in `tour/`, `night/` or `shared/`.
+- Open http://127.0.0.1:5190/ instead of double-clicking `tour/index.html` or `night/index.html`. A source page opened from disk skips the build, and the browser blocks its module scripts with a cross-origin error.
+
+### Controls
+
+Day tour: `W` `A` `S` `D` or the arrow keys walk, drag or `Q`/`E` looks around, `Shift` walks faster, `H` opens help and `Esc` pauses. Haunted night: `M` opens the campus map, `F` toggles the torch, `E` interacts, `Q` rings the bell, `Shift` runs and `Space` kicks. Touch screens show direction buttons and the night's kick and sprint buttons.
+
 On Windows, after the first build you can also double-click **Start-GBU-Campus.cmd**. It uses the existing Codex Node runtime when available, otherwise Node from PATH, and opens the game.
 
 **5190 is the default local port.** Both `npm start` and the Windows launcher respect the `PORT` environment variable. To choose another port, set it before starting. For example, in PowerShell:
@@ -63,3 +75,9 @@ The earlier integration suite uses local Chrome through Playwright, checks same-
 Relative building locations follow the supplied physical-model photos/video; visible facades follow the organized campus photos. Distances are compressed for gameplay. Unseen elevations, interiors and the night story remain interpretations. The site is an independent study, not an official or surveyed university reconstruction.
 
 The original Refined_Tour and Haunted_Campus folders are preserved as source history. Future changes to the unified website belong in this Campus_Experience folder. Three.js and Vite are MIT-licensed; font licenses remain with their assets. CC0 environment/material sources are retained under tour/public/environment/SOURCES.md. The existing GBU shirt crest is retained unchanged.
+
+## W07 course fork note
+
+This fork is a Week 07 homework copy of the teaching sample. The only change from upstream `22d84e5` is the "First-run checks" and "Controls" text above: no game source, asset, build or hosting file was modified. Setup and run steps are the same as "Run locally".
+
+Known limits: on Windows 11 with Node 24.22.0 I repeated `npm ci`, `npm run build`, `npm start`, both local routes, the day guided visit and the on-foot walk, the night run and its Watch demo, and the source page that stays on "Preparing your visit…" after a direct file open. I did not retest a physical phone, audio output timing or the GitHub Pages deployment from this fork, and port 5190 must be free on the reader's machine.
